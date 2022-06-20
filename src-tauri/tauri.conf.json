@@ -87,7 +87,7 @@
         "resizable": true,
         "title": "Registradora",
         "width": 800,
-        "alwaysOnTop": true
+        "alwaysOnTop": false
       }
     ]
   }
