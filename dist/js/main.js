@@ -1,5 +1,7 @@
 import Order from "./Order.js";
 
+const invoke = window.__TAURI__.invoke
+
 var burger_btn = document.getElementById("burger_btn")
 var close_order = document.getElementById("close_order")
 
@@ -16,5 +18,5 @@ burger_btn.addEventListener('click', () => {
 close_order.addEventListener('click', (event) => {
     event.preventDefault();
     unaOrden.saveInDatabase();
-    alert('Orden tomada')
+    invoke('save_order', { order: unaOrden.toString() });
 })
