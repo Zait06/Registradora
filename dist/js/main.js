@@ -1,14 +1,12 @@
-import Order from "./Order.js";
-
-const invoke = window.__TAURI__.invoke
+import { Order } from "./Order.js";
 
 var burger_btn = document.getElementById("burger_btn")
 var close_order = document.getElementById("close_order")
 
-var unaOrden;
+var order_active;
 
 window.onload = () => {
-    unaOrden = new Order();
+    order_active = new Order();
 }
 
 burger_btn.addEventListener('click', () => {
@@ -17,6 +15,5 @@ burger_btn.addEventListener('click', () => {
 
 close_order.addEventListener('click', (event) => {
     event.preventDefault();
-    unaOrden.saveInDatabase();
-    invoke('save_order', { order: unaOrden.toString() });
+    order_active.saveInDatabase();
 })

@@ -1,4 +1,6 @@
-export default class Order {
+export const invoke = window.__TAURI__.invoke
+
+export class Order {
     constructor() {
         if (localStorage.getItem('order'))
             this.initFromStorage();
@@ -58,7 +60,9 @@ export default class Order {
 
     saveInDatabase() {
         this.end = true;
-        localStorage.setItem('order', this.toString());
-        this.initFromStorage();
+        const order = this.toString()
+        localStorage.setItem('order', order);
+        invoke('save_order', { order });
+        this.init()
     }
 }
